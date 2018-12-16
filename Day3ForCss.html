@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--method2使用style标签--><!--内部样式-->
+    <!--
+     <style>
+        div{
+            background:red;
+            width:50px;
+            height: 100px;
+        }
+    </style>
+    -->
+    <style>
+        p#demo6{
+            color: #000;
+        }
+        p#demo6{
+            color: #000;
+        }
+        div#demo7{
+            background: #000;
+            font-size: 30px;
+        }
+        div#demo8{
+            background: #000;
+            font-size: 20px;
+        }
+    </style>
+    <!--method3使用link标签连接css文件--><!--外部样式-->
+    <link rel="stylesheet" href="Day3.css">
+</head>
+<body>
+    <!--method1直接在标签里面内嵌属性--><!--内联样式-->
+    <div style="background:red; width:50px;height: 100px;">苹果</div>
+    <div style="background:red; width:50px;height: 100px;">荔枝</div>
+    <div id="tset">hahahahahahahahahah</div>
+    <p id="">你好呀</p>
+    <p>世界</p>
+    <p id="test">我不想秃头啊</p>
+    <p id="test">学习css</p>
+    <p class="demo"></p>
+    <div>
+        <p class="demo1 demo2" >class选择器</p>
+    </div>
+    <div id="demo3">demo3</div>
+    <div id="demo4">demo4</div>
+    <div class="demo5" id="demo5">demo5</div>
+    <p id="demo6">demo6</p>
+    <div id="demo7" style="background:yellowgreen;font-size:40px;">demo7</div>
+    <div id="demo8" style="background:yellow;font-size:40px;">demo8</div>
+    <div >div1
+        <div id="demo9">div2
+            <p>p2</p>
+        </div>
+        <p>p1</p>
+    </div>
+    <div class="demo10">demo10
+        <div>
+            demo10
+            <p>demo10</p>
+        </div>
+    </div>
+</body>
+</html>

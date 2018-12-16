@@ -1,0 +1,193 @@
+/*组合选择器demo1*/
+/*
+div,p{
+    color: #f00;
+}
+p{
+    font-size:20px;
+}
+*/
+/* 嵌套选择器
+div.demo2{
+    color: aqua;
+    font-size: 20px;
+}
+*/
+/*子选择器*/
+div#demo3 > p{
+    color: blue;
+    font-size: 40px;
+}
+/*属性选择器 
+属性=值 一一对应
+属性~=值 只要标签有包含此属性的值 因为可以有多个属性
+属性^=值 以值开始的标签
+属性$=值 以值结束的标签
+*/
+
+/* p[title=demo4]{
+    background: yellow;
+    font-size: 30px;
+    color: red;
+} */
+/* p[title~=demo4]{
+    background: yellow;
+    font-size: 30px;
+    color: red;
+} */
+/* p[title^=dem]{
+    background: yellow;
+    font-size: 30px;
+    color: red;
+} */
+/* p[title$=o4]{
+    background: yellow;
+    font-size: 30px;
+    color: red;
+} */
+/*伪元素选择器*/
+/* p[title=demo4]::before{
+    content: "before";
+    font-size: 20px;
+}
+p[title=demo4]::after{
+    content: "after";
+    font-size: 30px;
+}
+p[title=demo4]{
+    background: red;
+    font-size: 40px;
+    color: blueviolet
+} */
+/* 对于块元素：
+第一个字母：first-letter
+第一行：first-line */
+/* p[title=demo5]::first-letter{
+    font-size: 40px;
+    color: blueviolet;
+}
+p[title=demo5]::first-line{
+    font-size: 20px;
+    color:red;
+} */
+/* 伪类选择器 状态 */
+/*
+ body{
+   
+    background-repeat:no-repeat;
+   
+    background-position:50% 10%;
+    
+    background-attachment:fixed;
+} 
+*/
+/* background:color image repeat attachment position */
+
+/* body{
+    background: yellow url('jackma.jpg') repeat-x fixed 50% 20%;
+} */
+div#demo6{
+    font-family: "Microsoft YaHei","黑体";
+}
+div#demo7{
+    font-size:32px;
+}
+/*系统默认大小为16px 即1em*/
+/* font-weight 字体粗细 100~900 */
+/* div.demo8{
+    font-size:20px;
+    font-weight: 100;
+}
+div.demo9{
+    font-size:20px;
+    font-weight:900;
+}
+div.demo9{
+    font-style:italic;
+} */
+/*
+关于字体的一些总结：
+font-family 来确定字体的家族 如Microsoft YaHei等等
+font-size 用来确定字体的大小 默认为1em = 16px
+font-weight 用来确定字体的粗细 100-900
+font-style 用来确定字体的样式 如italic斜体等等
+*/
+
+/* 简易写法
+font: style weight size/line-weight font-family 
+至少要设置font-size font-family
+font: 30px Microsoft YaHei
+*/
+
+/* div.demo9{
+    font:italic 400 20px Microsoft YaHei;
+} */
+p.demo10{
+    /* 字符间距 letter-spacing */
+    /* 空格间距 word-spacing*/
+    letter-spacing: 2px;
+    text-decoration:underline;
+}
+p.demo11{
+    word-spacing:20px;
+    /* direction: rtl; */
+    text-decoration: overline;
+}
+/* text-decroation: 划线
+none 
+line-through 横穿
+ underline  下划线
+ overline    上划线
+  */
+
+/* 文件的对齐方式
+text-align:
+left
+right
+center 
+justify
+ */
+ /* p.demo12{
+     text-align: center;
+ }
+ p.demo13{
+     text-align:left;
+ }
+ p.demo14{
+    text-align:right;
+}
+p.demo15{
+    text-align:justify;
+} */
+p.demo16{
+    width: 300px;
+    height:300px;
+    background: yellow;
+    text-indent: 60px;
+    text-align: center;
+}  
+/* 
+英文大小写 
+text-transform:
+uppercase 全大写
+lowercase 全小写
+capitalise 首字母大写
+*/
+p.demo17{
+    /* text-transform:uppercase; */
+    /* test-transform:lowercase;*/
+    text-transform: capitalize; 
+}
+p.demo18{
+    background: yellow;
+    /* white-space: nowrap;
+    width: 250px;
+    height: 300px;
+    overflow: hidden;
+    text-overflow:ellipsis; */
+}
+img{
+    width: 200px;
+    /* top center bottom */
+    vertical-align: top;
+}

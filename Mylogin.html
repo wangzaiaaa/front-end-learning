@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<style type="text/css">
+			/*登录界面 */
+			
+			#login_div {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				z-index: 5;
+				background-color: rgba(0, 0, 0, 0.6);
+				background-size: cover;
+				display: block;
+			}
+			
+			.login_txt {
+				width: 400px;
+				height: 300px;
+				background-color: white;
+				margin: 0 auto;
+				margin-top: 150px;
+				color: white;
+			}
+			
+			.login_top {
+				width: 100%;
+				height: 35px;
+				background-color: #63c2ad;
+			}
+			
+			.login_li {
+				margin-top: 20px;
+				margin-left: 75px;
+				color: gray;
+			}
+			
+			.login_li1 {
+				margin-top: 20px;
+				margin-left: 75px;
+				color: gray;
+			}
+			
+			.login_li2 {
+				margin-top: 20px;
+				margin-left: 75px;
+				color: gray;
+				width: 151px;
+				color: gray;
+			}
+			
+			.login_button {
+				width: 250px;
+				height: 30px;
+				background: transparent;
+				border: none;
+				background-color: #63c2ad;
+				cursor: pointer;
+				color: gray;
+			}
+			
+			.login_button:hover {
+				color: black;
+			}
+			
+			.login_a {
+				color: gray;
+			}
+			
+			.login_a:hover {
+				color: black;
+			}
+			/*注册界面*/
+			
+			#register_div {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				z-index: 5;
+				background-color: rgba(0, 0, 0, 0.6);
+				background-size: cover;
+				display: none;
+			}
+			
+			.register_txt {
+				width: 400px;
+				height: 300px;
+				background-color: white;
+				margin: 0 auto;
+				margin-top: 150px;
+				color: white;
+			}
+			
+			.register_top {
+				width: 100%;
+				height: 35px;
+				background-color: #63c2ad;
+			}
+			
+			.register_li {
+				margin-top: 20px;
+				margin-left: 75px;
+				color: gray;
+			}
+			
+			.register_li1 {
+				margin-top: 20px;
+				margin-left: 75px;
+				color: gray;
+			}
+			
+			.register_li2 {
+				margin-top: 20px;
+				margin-left: 75px;
+				color: gray;
+				width: 151px;
+			}
+			
+			.register_button {
+				width: 250px;
+				height: 30px;
+				background: transparent;
+				border: none;
+				background-color: #63c2ad;
+				cursor: pointer;
+				color: gray;
+			}
+			
+			.register_a {
+				color: gray;
+			}
+			
+			.register:hover {
+				color: white;
+			}
+			
+			#close {
+				width: 15px;
+				height: 15px;
+				background: transparent;
+				border: none;
+				background-image: url(./closeButton.png);
+				background-size: cover;
+				cursor: pointer;
+				float: right;
+				margin-top: 10px;
+				margin-right: 10px;
+			}
+			
+			ul {
+				list-style: none;
+				margin-top: 0;
+				margin-bottom: 10px;
+				padding-left: 0px;
+			}
+		</style>
+
+		<script type="text/javascript">
+			function login() {
+				if(getCookie("loginUserId") == "") {
+					//用户未登陆
+					login_div.style.display = "block";
+				} else {
+					//用户已登录
+					var con = confirm("是否注销当前账号？");
+					if(con == true) {
+						//可以让用户进行登出
+						document.cookie = "loginUserId=";
+						//清掉后台的cookie
+						$.ajax({
+							type: "post",
+							url: "http://120.79.181.191:80/ShipView/UserManage/logout",
+							data: {}, //Email参数
+							async: true,
+							dataType: 'json',
+							success: function(result) {
+								//alert("登出！");
+							}
+						});
+						//显示登录
+						document.getElementById("login_img").src = "./img/login.png";
+					}
+				}
+
+			}
+
+			function login_close() {
+				login_div.style.display = "none";
+			}
+
+			function toRrgister() {
+				login_div.style.display = "none";
+				register_div.style.display = "block";
+			}
+
+			function register_close() {
+				register_div.style.display = "none";
+			}
+
+			function toLogin() {
+				register_div.style.display = "none";
+				login_div.style.display = "block";
+			}
+            function userRrgister(){
+	            //1.先获取前台的用户名密码和邮箱
+	            var email = $("#REmail").val();
+	            var username = $("#Rusername").val();
+	            var password = $("#Rpassword").val();
+	            //2.进行注册
+	            if(email!=""&&username!=""&&password!=""){
+		        $.ajax({
+			    type:"post",
+			    url:"http://120.79.181.191:80/ShipView/UserManage/userRegister",
+			    data: {
+				email:email,
+				userName:username,
+				password:password,
+				
+				}, //Email参数
+			    async:true,
+			    dataType:'json',
+			    success:function(result){
+				//alert(result.successful);
+				if(result.successful!=0){
+					//注册成功
+					alert("注册成功");
+					//跳转登录
+					toLogin();
+				}else{
+					alert(result.errors[0].message);
+				}
+			}
+		});
+	        }else{
+		        alert("所以内容不能为空");
+	        }
+        }
+		</script>
+	</head>
+
+	<body>
+		<!--登录功能-->
+		<div id="login_div">
+			<div class="login_txt">
+				<div class="login_top">
+					<button id="close" onClick="login_close()"></button>
+				</div>
+				<ul>
+					<li class="login_li1">请登录</li>
+					<li class="login_li"><input id="username" type="text" name="username" placeholder="用户名" style="width: 250px;height: 30px;text-indent: 20px;" /></li>
+					<li class="login_li"><input id="password" type="password" name="password" placeholder="密码" style="width: 250px;height: 30px;text-indent: 20px;" /></li>
+					<li class="login_li"><button class="login_button" onclick="userLogin()">登录</button></li>
+					<li class="login_li2">
+						<a class="login_a" href="javascript:void(0)" onClick="toRrgister()">没有账号?快速注册!</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!--注册功能-->
+		<div id="register_div">
+			<div class="register_txt">
+				<div class="register_top">
+					<button id="close" onClick="register_close()"></button>
+				</div>
+				<ul>
+					<li class="register_li1"><input id="REmail" type="text" name="username" placeholder="电子邮箱" style="width: 250px;height: 30px;text-indent: 20px;" /></li>
+					<li class="register_li"><input id="Rusername" type="text" name="username" placeholder="用户名" style="width: 250px;height: 30px;text-indent: 20px;" /></li>
+					<li class="register_li"><input id="Rpassword" type="password" name="password" placeholder="密码" style="width: 250px;height: 30px;text-indent: 20px;" /></li>
+					<li class="register_li"><button class="login_button" onclick="userRrgister()">注册</button></li>
+					<li class="register_li2">
+						<a class="login_a" href="javascript:void(0)" onClick="toLogin()">已有账号?快速登录!</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>

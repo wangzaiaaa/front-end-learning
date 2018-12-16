@@ -1,0 +1,117 @@
+
+div{
+    /*
+    background:red;
+    width:50px;
+    height: 100px;
+    color:rgb(255,0,0);
+    /*color: rgb(30%,30%,30%);
+    颜色有3种表示方法：
+     1 用rgb表示  
+     2 用颜色的名称 如red 可以去查下表
+     3 用16进制来表示 
+
+     */
+    color: #ff0000;
+}
+
+
+
+/*
+css的选择器：
+一 基本选择器
+二 组合
+三 属性
+四 伪元素
+基本选择器：*通配符 标签div id选择器 class
+*/
+/*
+*{
+    border: 1px solid black
+}
+*/
+
+
+/*
+p{
+    border: 1px solid beige
+}
+*/
+/*p#test为全写  */
+p#test {
+    border: 2px solid yellow;
+    font-size: 30px;
+}
+div#test{
+    border: 3px solid green;
+}
+.demo1{
+    font-size: 30px;
+}
+.demo2{
+    color: aqua
+}
+/*同一个选择器的相同的属性后执行的会覆盖先执行的
+  demo2
+*/
+div#demo3{
+    color:green;
+    color: #ff0000;
+}
+/*同类型的选择器后执行的会覆盖先执行的
+  demo4
+*/
+div#demo4{
+    color: #000;
+}
+div#demo4{
+    color: #ff0000;
+}
+/*不同类型的选择器先解析低优先级的然后在解析高优先级的
+  优先级顺序* div class id
+  demo5
+*/
+div#demo5{
+    background-color:pink;
+}
+div.demo5{
+    background-color: #000;
+}
+/*css的外部样式和内部样式是合并后再解析的
+  先外部样式在内部样式，即外部样式放在前面，内部样式放在后面
+  demo6
+*/
+p#demo6{
+    color:yellow;
+}
+/*只有当外部样式和内部样式都解析完后才解析内联样式
+  demo7
+*/
+div#demo7{
+    background: #ff0000;
+    font-size: 20px;
+}
+/*加了important的字段最后解析
+  demo8
+*/
+div#demo8{
+    background: #ff0000!important;
+    font-size:15px;
+}
+/*
+关于继承原则 只有文字 文本 样式才可以被继承 demo9
+块级元素的宽度没有设置的话 为继承父块级元素的宽度 demo10
+高的话由内容决定
+*/
+div#demo9{
+    color: aqua;
+    font-size: 20px;
+}
+div.demo10{
+    width: 30px;
+    color: royalblue; 
+    background: #ff0000; 
+}
+
+
+
